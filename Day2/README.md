@@ -70,19 +70,13 @@ def celsius_to_fahrenheit(celsius):
 def fahrenheit_to_celsius(fahrenheit):
     return (fahrenheit - 32) * 5 / 9
 
-def celsius_to_kelvin(celsius):
-	return celsius + 273.15
-
-def fahrenheit_to_kelvin(fahrenheit):
-	return (fahrenheit - 32) * 5 / 9 + 273.15
-
 def validate_celsius_input(celsius):
 	# 输入整数或浮点数，验证是否 >= 0K
-	return celsius_to_kelvin(celsius) >= 0
+	return celsius >= -273.15
 
 def validate_fahrenheit_input(fahrenheit):
 	# 输入整数或浮点数，验证是否 >= 0K
-	return fahrenheit_to_kelvin(fahrenheit) >= 0
+	return fahrenheit >= -459.67
 
 def main():
 	print("请选择转换方式：")
