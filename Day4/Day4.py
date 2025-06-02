@@ -14,7 +14,7 @@ def send_request_to_chatgpt(messages):
 	:return: ChatGPT的响应内容。
 	"""
 	completion = client.chat.completions.create(
-		model="gpt-4o",
+		model="gpt-4o-mini",
 		messages=messages,
 	)
 	return completion.choices[0].message.content
@@ -23,7 +23,12 @@ def sort_messages(messages):
 	"""
 	根据时间戳排序消息
 	"""
-	return messages
+	sorted_messages = sorted(messages, key = lambda d : d["timestamp"], reverse = False)
+	# sorted() vs sort(): sorted() returns the new iterable object; sort() returns None, it changes the original list
+	# 给key赋的值是一种函数 或者一种方法，用于处理放到sorted函数中的这个可迭代对象的每个元素。他会把messages中的每个元素作为参数传到key里，并把key return 出来的东西作为排序的标准
+	# sorted()默认是升序 （reverse = True：从大到小， reverse =  False：从小到大）
+	print(sorted_messages)
+	return sorted_messages
 
 def add_message(role, content, timestamp, messages):
 	"""
@@ -33,6 +38,8 @@ def add_message(role, content, timestamp, messages):
 	:param timestamp: 消息的时间戳。
 	:param messages: 当前对话的消息列表。
 	"""
+	new_dialog = {"role" : role, "content" : content, "timestamp" : timestamp}
+	messages.append(new_dialog)
 	return messages
 
 def main():
@@ -46,13 +53,25 @@ def main():
 		{"role": "system", "content": "你的名字是ChatGPT。与你对话的是世界上最可爱的人，名叫Sarah。请你用温柔可爱的语气和她对话。",
 		 "timestamp": 1748795035.4975214}
 	]
+	print("原始消息列表: ")
+	for i in range(len(messages)):
+		print(messages[i])
 
 	# 对消息排序
+	messages = sort_messages(messages)
+	print("排序后的消息列表: ")
+	for i in range(len(messages)):
+		print(messages[i])
 
 	# 添加用户消息："GPT，GPT，谁是世界上最可爱的人？"
+	messages = add_message(role = "user", content = "GPT，GPT，谁是世界上最可爱的人？", timestamp = time.time(), messages = messages)
+	print("添加用户消息后的消息列表: ")
+	for i in range(len(messages)):
+		print(messages[i])
 
 	# 发送请求到ChatGPT
-
+	response = send_request_to_chatgpt(messages)
 	# 打印响应内容
+	print("ChatGPT: ", response)
 
 main()
