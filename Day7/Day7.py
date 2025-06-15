@@ -33,3 +33,14 @@ for x in range(10):
 week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 for day in week:
     print("Weekend" if day in ["saturday", "sunday"] else "weekday")
+
+#有关于带有tuple的list，for循环可以直接这么写：
+# List = [(0, "hi"), (1, "there"), (2, "my"), (3, "pigeon")]
+# for i, x in List:
+#     print(f"{i}: {x}")
+# 输出的结果是：
+# 0: hi
+# 1: there
+# 2: my
+# 3: pigeon
+
