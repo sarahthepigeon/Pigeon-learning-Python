@@ -1,0 +1,22 @@
+Nora Intan RHD ICM
+RMS Sleep Modulation Processing Module
+Saved Parameters: None
+Name of Parameter Profile: ID10_TestParams
+EEG Source Channel: ('Nora Intan RHD ICM', 'intan_ch6')
+Delta Amplitude Threshold: 0.06
+EEG Min RMS Threshold: 0.01
+ACC Max RMS Threshold: 250.0
+RMS Window Size: 300
+Filter Low Cutoff: 0.25
+Filter High Cutoff: 4.0
+Sound Length (s): 0.05
+Sound Type: 2
+Pure Tone Note: 4
+Stereo: True
+Audio Overhead (s): 0.04
+Trigger Type: 0
+Number of Stim/Trigger: 2
+First Delay (s): 0.42
+Stimulus Period (s): 1.08
+Timeout (s): 2.5
+Alternating Stim/Sham: True
